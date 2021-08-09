@@ -8,7 +8,7 @@ model = Model()
 
 @app.route("/", methods=["GET"])
 def home():
-	return "OK!", 200
+	return "OK!!!!", 200
 
 @app.route("/predict",  methods=["POST"])
 def predict():
