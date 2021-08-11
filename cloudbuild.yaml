@@ -23,6 +23,6 @@ steps:
   - "config.yaml"
   env:
   - "CLOUDSDK_COMPUTE_ZONE=europe-north1-b"
-  - "CLOUDSDK_CONTAINER_CLUSTER"="purchase-predict-api"
+  - "CLOUDSDK_CONTAINER_CLUSTER"=purchase-predict-api"
   images:
-  - "gce.io/$PROJET_ID/purchase-predict-api:$SHORT_SHA"
+  - "gcr.io/$PROJET_ID/purchase-predict-api:$SHORT_SHA"
