@@ -21,9 +21,9 @@ spec:
         - name: PORT 
           value: "80"
         - name: ENV 
-          value: "staging"
+          value: "production"
         - name: MLFLOW_SERVER
-          value: "http://35.205.231.34"
+          value: "http://34.140.98.72"
         - name: MLFLOW_REGISTRY_NAME
           value: "purchase_predict"
         ports:
