@@ -1,3 +1,4 @@
+#ok
 steps:
 - name: "gcr.io/cloud-builders/docker"
   id: Building Docker image
