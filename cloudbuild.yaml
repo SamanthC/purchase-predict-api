@@ -20,6 +20,9 @@ steps:
   - 'create'
   - 'namespace'
   - 'api-purchase'
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=europe-north1-b'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=purchase-predict-api'
 - name: 'gcr.io/cloud-builders/kubectl'
   id: Deploy to K8s
   args:
