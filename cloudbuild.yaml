@@ -18,7 +18,7 @@ steps:
   id: Deploy to K8s
   args:
   - 'apply'
-  - '--namespaces'
+  - '--namespace'
   - 'api-purchase'
   - '-f'
   - 'config.yaml'
