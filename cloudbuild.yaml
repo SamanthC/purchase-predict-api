@@ -15,6 +15,12 @@ steps:
      sed -s '$a---' k8s/*.yaml > config.yaml.tpl &&
      sed "s/DOCKER_TAG/${SHORT_SHA}/g" config.yaml.tpl > config.yaml
 - name: 'gcr.io/cloud-builders/kubectl'
+  id: create namespace
+  args:
+  - 'create'
+  - 'namespace'
+  - 'api-purchase'
+- name: 'gcr.io/cloud-builders/kubectl'
   id: Deploy to K8s
   args:
   - 'apply'
