@@ -10,7 +10,7 @@ from google.cloud.logging_v2.handlers import CloudLoggingHandler
 app = Flask(__name__)
 
 logging_client = google.cloud.logging.Client()
-cloud_handler = CloudLoggingHandler(logging_client, name="purchase-preidct-api")
+cloud_handler = CloudLoggingHandler(logging_client, name="purchase-predict-api")
 
 LOGGER = logging.getLogger()
 LOGGER.setLevel(logging.INFO)
