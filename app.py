@@ -2,7 +2,6 @@ import pandas as pd
 from flask import Flask, request, jsonify
 from flask.logging import default_handler
 from src.model import Model
-from src.auth import generate_token, require_authentication
 import logging
 import google.cloud.logging
 from google.cloud.logging_v2.handlers import CloudLoggingHandler
@@ -35,7 +34,6 @@ def auth():
 		return jsonify({"error": "mot de passe invalide"}), 403
 
 @app.route("/predict",  methods=["POST"])
-@require_authentication
 def predict():
 	body = request.get_json()
 	df = pd.read_json(body)
