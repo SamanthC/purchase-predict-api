@@ -7,3 +7,4 @@ google-cloud-storage==1.41.1
 lightgbm==3.2.1
 scikit-learn==0.24.2
 google.cloud.logging==2.6.0
+PyJWT==2.1.0

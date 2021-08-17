@@ -23,7 +23,7 @@ spec:
         - name: ENV 
           value: "production"
         - name: MLFLOW_SERVER
-          value: "http://34.140.98.72"
+          value: "http://35.233.67.112"
         - name: MLFLOW_REGISTRY_NAME
           value: "purchase_predict"
         ports:
