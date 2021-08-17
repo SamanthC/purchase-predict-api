@@ -2,7 +2,7 @@ import pandas as pd
 from flask import Flask, request, jsonify
 from flask.logging import default_handler
 from src.model import Model
-
+from src.auth import generate_token, require_authentication
 import logging
 import google.cloud.logging
 from google.cloud.logging_v2.handlers import CloudLoggingHandler
@@ -10,7 +10,7 @@ from google.cloud.logging_v2.handlers import CloudLoggingHandler
 app = Flask(__name__)
 
 logging_client = google.cloud.logging.Client()
-cloud_handler = CloudLoggingHandler(logging_client, name="purchase-preidct-api")
+cloud_handler = CloudLoggingHandler(logging_client, name="purchase-predict-api")
 
 LOGGER = logging.getLogger()
 LOGGER.setLevel(logging.INFO)
@@ -24,8 +24,27 @@ def home():
 	LOGGER.info("OK!!!!")
 	return "OK!!!!", 200
 
+@app.route('/auth', methods=["POST"])
+def auth():
+    body = request.get_json()
+    if body and body.get("password", "") == "blent":
+        token = generate_token()
+        return jsonify({"token": token}), 200
+    else:
+        return jsonify({"error": "Mot de passe invalide."}), 403
+
+@app.route("/auth", methods=["POST"])
+def auth():
+	body=request.get_json()
+	if body and body.get("password", "") == "blent":
+		token = generate_token()
+		return jsonify({"token": token}), 200
+	else:
+		return jsonify({"error": "mot de passe invalide"}), 403
+
 @app.route("/predict",  methods=["POST"])
-def predict():
+@require_authentication
+ def predict():
 	body = request.get_json()
 	df = pd.read_json(body)
 	LOGGER.info("Predicting fot DataFrame of shape {}".format(df.shape))
