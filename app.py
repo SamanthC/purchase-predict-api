@@ -34,6 +34,7 @@ def auth():
 		return jsonify({"error": "mot de passe invalide"}), 403
 
 @app.route("/predict",  methods=["POST"])
+@require_authentication
 def predict():
 	body = request.get_json()
 	df = pd.read_json(body)
