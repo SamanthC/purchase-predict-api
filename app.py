@@ -33,18 +33,9 @@ def auth():
     else:
         return jsonify({"error": "Mot de passe invalide."}), 403
 
-@app.route("/auth", methods=["POST"])
-def auth():
-	body=request.get_json()
-	if body and body.get("password", "") == "blent":
-		token = generate_token()
-		return jsonify({"token": token}), 200
-	else:
-		return jsonify({"error": "mot de passe invalide"}), 403
-
 @app.route("/predict",  methods=["POST"])
 @require_authentication
- def predict():
+def predict():
 	body = request.get_json()
 	df = pd.read_json(body)
 	LOGGER.info("Predicting fot DataFrame of shape {}".format(df.shape))
